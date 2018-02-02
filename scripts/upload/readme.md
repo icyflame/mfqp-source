@@ -2,6 +2,32 @@
 
 > Upload and update the paper on MFQP source and MFQP
 
+### Dockerized
+
+This script can now be run inside a dockerized environment:
+
+1. Build the Dockerfile that's present inside this folder using
+
+    ```sh
+    $ docker build -t mfqpsourceuploader \
+        --build-arg http_proxy="http://172.16.2.30:8080" \
+        --build-arg https_proxy="http://172.16.2.30:8080" \
+        .
+    ```
+
+2. Now, create a new container and get a shell inside that container.
+
+    ```sh
+    $ docker run -it mfqpsourceuploader bash
+    ```
+
+3. At this point, `docker ps` will show this new container. You can use `docker
+   cp` to copy the paper PDFs into the container at
+   `/app/mfqp-source/scripts/upload`
+
+4. After copying the papers, you are in the same situation as below. Continue
+   starting from step 2. Ignore step 4 along the way.
+
 ### Steps to run this script
 
 1. You NEED to have [drive](https://github.com/prasmussen/gdrive/blob/3c7e4127ab7722146ab688dbe0c39e73d8a08b8b/README.md#downloads) in your
