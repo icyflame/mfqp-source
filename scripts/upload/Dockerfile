@@ -1,6 +1,10 @@
 # begin with a ruby 2.2 base image
 FROM ruby:2.2
 
+# setup environment (remove if you have a direct connection to the Internet)
+ENV http_proxy 172.16.2.30:8080
+ENV https_proxy 172.16.2.30:8080
+
 # copy the provided drive binary so that it is available to us in the shell
 # (specific version: drive v1.9.0)
 COPY drive-190-bin /usr/local/bin/drive
@@ -19,8 +23,5 @@ WORKDIR /app/mfqp-source/scripts/upload
 # create a test file (which will be used for uploading once and getting things
 # done)
 RUN echo "test" > test
-
-ENV http_proxy 172.16.2.30:8080
-ENV https_proxy 172.16.2.30:8080
 
 RUN ["bundle", "install"]
