@@ -25,3 +25,5 @@ WORKDIR /app/mfqp-source/scripts/upload
 RUN echo "test" > test
 
 RUN ["bundle", "install"]
+
+ENTRYPOINT ["tail", "-f", "/dev/null"]
