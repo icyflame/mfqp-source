@@ -1,4 +1,4 @@
 version: "3"
 services:
     uploader:
-        image: mfqpsourceuploader:latest
+        build: "."
